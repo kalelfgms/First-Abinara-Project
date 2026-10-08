@@ -4,6 +4,12 @@
 
 int main () {
     bool running = true;
+
+    do
+    {
+        
+    } while (running);
+    //ends
     
     return 0;
 }

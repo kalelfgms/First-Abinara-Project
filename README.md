@@ -34,13 +34,37 @@ INVENTORY:
 | 02 | premium chips        | 15,000  |  999  |
 | 3  | air gunung krakatau  | 10,000  |  999  |
 
+(add type, subtype, and id too??)
+
 ACTIONS:
 [A] Add Product
 [R] Remove Product
+[V] View Product
 [X] Exit 
 
-watchu gon do: (cin), either A, R, X
---------------------------------------------
+Choose Action: (cin), either A, R, V, X
+A--------------------------------------------
+Add Product | choose product type (typelist) : str
+Choose Subtype (subtypelist) : str
+
+R--------------------------------------------
+Remove Product | Enter Product no. :
+V--------------------------------------------
+show ts
+[        family mart mulyos asik uhuy         ]
+[        PRODUCT: twentycharactershaha        ]
+| type: hai
+|  | subtype: lol
+| price: 999,999
+| stock: 99
+[            data gizi           ]
+| weight | calories | expires in | extend depending on wtv properties
+|  999gr |  9999kal |   14 days  |
+X--------------------------------------------
+Goodbye!
+
+
+view product shows more data bout that product (priv values in class)
 
 no: | 2char(01, 10) |
 prodname: 20 char + 2 space left n right, rest fill w space |
