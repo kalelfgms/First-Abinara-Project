@@ -48,7 +48,7 @@ class product{
         }
 };
 
-inline vector<product> inventory = {}; 
+vector<product> inventory = {}; 
 
 class food: public product{
     private:

@@ -12,7 +12,7 @@ void printProductLine(int index){
     //dynamic spaces based on product name length, so table is consistent size
     product Product = inventory[index];
 
-    string indexStr = to_string(index);
+    string indexStr = to_string(index+1);
     string name = Product.getValue(productInfo::Name);
     string type = Product.getValue(productInfo::Type);
     string subtype = Product.getValue(productInfo::Subtype);
@@ -67,7 +67,7 @@ void printProductLine(int index){
 
     int propLen = propertiesOutput.length();
     int max_prop = 40;
-    print(" " + propertiesOutput + spacing(max_prop, propLen) + " |", false); // 30ch
+    print(" " + propertiesOutput + spacing(max_prop, propLen) + " |"); // 40ch
 }
 
 void showInterface(){//shows interface
