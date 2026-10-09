@@ -1,5 +1,14 @@
+#pragma once
 #include "include.hpp"
-#include "functions.hpp"
+#include "globals.hpp"
+#include "functions/functions.hpp"
+//product list
+//string Products[] = {};
+//make vector/array that holds all the products
+//arrays only hold 1 datatype tho...
+//convert price and stock to string
+//turn inputs for add product into string, or let og variable in class be string in da firs place
+//dont forget throws for when user doesnt input correct terms !!!
 
 class product{
     private:
