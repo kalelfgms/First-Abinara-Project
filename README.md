@@ -2,9 +2,9 @@
 
 Sistem untuk tambah entry produk ke dalam inventory, dan menampilkan dalam output.
 
-Dalam runner.cpp, addProduct() menambahkan produk ke dalam Invetory toko.
+Dalam runner.cpp, addProduct() menambahkan produk ke dalam Inventory toko.
 
-Tiap produk memiliki beberapa variable:
+### Tiap produk memiliki beberapa variable:
 ```
 string name;                  nama produk
 string type;                  tipe produk, misal: food, drink, hygiene, etc.
@@ -14,22 +14,44 @@ int price;                    harga produk
 int stock;                    stok produk
 ```
 
-Dalam runner.cpp, seperti ini:
+### Dalam runner.cpp, berikut fungsi untuk add produk ke dalam inventory:
 ```
-addProduct(
-    "indomie goreng",                       // name
-    "food", "instant",                      // type, subtype
-    4000, 11,                               // price, stock
-    {"100gr", "300kal", "expire: 30 days"}  // properties
+//FOOD CLASS
+addProduct<Food>(Inventory,
+    "indomie goreng", "instant",    //name, subtype
+    4000, 150,                      //price, stock
+    100, 300, 2                     //grams, cal, expire (days)
 );
 ```
 
-Dalam output, seperti ini:
+### Class terdiri dari:
+1. Product: Abstract Class, punya variable dasar nama, subtype, price, dan stock
+2. Food: Child Class dari Product, punya atribut weight(gr), calories(kal), expire(days)
+3. Drink: Child Class dari Product, punya atribut volume(ml), sugar(gr), expire(days)
+4. Hygiene: Child Class dari Product, punya atribut weight/volume(gr/ml), smell(anything)
+5. Medicine: Child Class dari Product, punya atribut dose(ml/mg), treats(anything), expire(days)
+```mermaid
+classDiagram
+    class Product {
+
+    }
+    Product <|-- Food
+    Product <|-- Drink
+    Product <|-- Hygiene
+    Product <|-- Medicine
+
 ```
-[        family mart mulyos asik uhuy         ]
+
+### Dalam output, seperti ini:
+```
+                                   [   nama toko yang sangat keren   ]                                      
 INVENTORY: 
-| no | product name         | price   | stock | category        | properties                               |
-| 1  | indomie goreng       | 4,000   |  11   | food, instant   | 100gr, 300kal, expire: 30 days           |
+
+| no | product name         | price   | stock | category             | properties                                         |
+| 1  | indomie goreng       | 2,000   | 150   | food, instant        | 100gr, 300kal, expires in 2 days                   |
+| 2  | aqua                 | 5,000   | 30    | drink, water         | 300ml, 0gr, expires in 30 days                     |
+| 3  | sampo batman         | 20,000  | 15    | hygiene, shampo      | 200ml, smells like batman                          |
+| 4  | panadol merah        | 18,000  | 10    | medicine, kaplet     | 100mg, treats sakit kepala, expires in 365 days    |
 ```
 
 Untuk tiap addProduct(), satu baris baru akan muncul dalam outputnya.

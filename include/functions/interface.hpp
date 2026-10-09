@@ -4,19 +4,25 @@
 void printHeader(){ // prints header
     print("                                   [   nama toko yang sangat keren   ]                                      ");
     print("INVENTORY: "); 
-    print("| no | product name         | price   | stock | category        | properties                               |"); //topbar format 
+    print(""); //topbar format 
+    print("| no |", false);                                                 //2ch
+    print(" product name         |", false);                                //20ch
+    print(" price   |", false);                                             //7ch
+    print(" stock |", false);                                               //5ch
+    print(" category             |", false);                                //20ch
+    print(" properties                                         |");  //50ch
 }
 
 void printProductLine(int index){ // prints each product row and its data
-    product Product = inventory[index];
+    Product& pr = *Inventory[index];
 
     string indexStr = to_string(index+1);
-    string name = Product.getValue(productInfo::Name);
-    string type = Product.getValue(productInfo::Type);
-    string subtype = Product.getValue(productInfo::Subtype);
-    string price = Product.getValue(productInfo::Price);
-    string stock = Product.getValue(productInfo::Stock);
-    vector<string> properties = Product.getProperties();
+    string name = pr.getName();
+    string type = pr.getType();
+    string subtype = pr.getSubtype();
+    string price = displayPrice(pr.getPrice());
+    string stock = to_string(pr.getStock());
+    vector<string> properties = pr.getProperties();
 
     const string sep = ", ";
 
@@ -32,25 +38,25 @@ void printProductLine(int index){ // prints each product row and its data
     //stock
     print(" " + stock + spacing(5, stock.length()) + " |", false);
 
-    //category
+    //type/category
     string categoryOutput = type + sep + subtype;
-    print(" " + categoryOutput + spacing(15, categoryOutput.length()) + " |", false);
+    print(" " + categoryOutput + spacing(20, categoryOutput.length()) + " |", false);
 
     //properties
     string propertiesOutput = "";
     int n_properties = properties.size();
     
-    for (int i = 0; i < n_properties - 1; i++){
+    for (int i = 0; i < n_properties; i++){
         if (i > 0) propertiesOutput += sep;
         propertiesOutput += properties[i];
     }
 
-    print(" " + propertiesOutput + spacing(40, propertiesOutput.length()) + " |");
+    print(" " + propertiesOutput + spacing(50, propertiesOutput.length()) + " |");
 }
 
 void showInterface(){ // loops thorugh inventory to show each product
     printHeader();
-    for (int i = 0; i < inventory.size(); i++){
+    for (int i = 0; i < Inventory.size(); i++){
         printProductLine(i);
     }
 }

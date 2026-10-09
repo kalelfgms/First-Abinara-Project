@@ -141,3 +141,45 @@ Add : Adds new product to inventory
 Remove : Removes product from inventory
 View : Views product in more detail
 Exit : Exits Program
+
+
+POLYMORPHISM
+
+INHERITANCE
+
+ways 2 make use of child classes
+each food type has diff tax, so price after tax is different
+
+Product
+>Consumable (food/drink tax)
+->food
+->drink
+>hygiene (hygiene tax)
+>medicine (medicine tax)
+
+    //FOOD
+    Inventory.push_back(make_unique<Food>(
+        "indomie goreng", "instant",    //name, subtype
+        4000, 150,                      //price, stock
+        100, 300, 2                     //grams, cal, expire (days)
+    ));
+    //DRINK
+    Inventory.push_back(make_unique<Drink>(
+        "aqua", "water",                //name, subtype
+        5000, 30,                       //price, stock
+        300, 0, 30                      //volume(ml), gula, expire
+    ));
+
+    //HYGIENE
+    Inventory.push_back(make_unique<Hygiene>(
+        "sampo batman", "shampo",       //name, subtype
+        20000, 15,                      //price, stock
+        200, "batman"                   //volume(ml), bau
+    ));
+
+    //MEDICINE
+    Inventory.push_back(make_unique<Medicine>(
+        "panadol merah", "kaplet",      //name, subtype
+        15000, 10,                      //price, stock
+        "100mg", "sakit kepala", 365    //dose, treats what, expire
+    ));

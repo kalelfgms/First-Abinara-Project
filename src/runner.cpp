@@ -1,26 +1,42 @@
 #include "../include/functions/interface.hpp" // for displaying to output
 
-void addProduct(string n, string t, string subt, int p, int stk, vector<string> prop){//at this point theres no need for child classes tbh.....
-    product Product(
-        n, t, subt, p, stk, prop
-    );
-    inventory.push_back(Product);
-}
+template <typename T, typename... Args>
+void addProduct(vector<unique_ptr<Product>>& Inventory, Args&&... args){
+    Inventory.push_back(make_unique <T>(forward<Args>(args)...));
+};
+//some magical thing yg bisa masuk args apapun, type apapun, dn push ke dlm inventory
+//Universal Factory Helper
 
 int main () {
-    addProduct(
-        "indomie goreng",                       // name
-        "food", "instant",                      // type, subtype
-        4000, 55,                               // price, stock
-        {"100gr", "300kal", "expire: 30 days"}  // properties
+    //FOOD
+    addProduct<Food>(Inventory,
+        "indomie goreng", "instant",    //name, subtype
+        4000, 150,                      //price, stock
+        100, 300, 2                     //grams, cal, expire (days)
     );
-    addProduct(
-        "popmie goreng rebus",
-        "food", "instant",
-        5000, 125,
-        {"80gr", "250kal", "expire: 30 days"}
+    //DRINK
+    addProduct<Drink>(Inventory,
+        "aqua", "water",                //name, subtype
+        5000, 30,                       //price, stock
+        300, 0, 30                      //volume(ml), gula, expire
+    );
+
+    //HYGIENE
+    addProduct<Hygiene>(Inventory,
+        "sampo batman", "shampo",       //name, subtype
+        20000, 15,                      //price, stock
+        200, "batman"                   //volume(ml), bau
+    );
+
+    //MEDICINE
+    addProduct<Medicine>(Inventory,
+        "panadol merah", "kaplet",      //name, subtype
+        15000, 10,                      //price, stock
+        "100mg", "sakit kepala", 365    //dose, treats what, expire
     );
 
     showInterface();
     return 0;
 }
+
+//find data makanan n stuff
