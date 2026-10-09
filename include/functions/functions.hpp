@@ -1,7 +1,7 @@
-#pragma once
-#include "../include.hpp"
+#pragma once // prevents recalling
+#include "../include.hpp" // base includes
 
-void print(string msg, bool newline = true){
+void print(string msg, bool newline = true){ // biar nulis print() aja, opsi utk newline
     if (newline) {
         cout<<msg<<endl;
     }else{
@@ -9,7 +9,7 @@ void print(string msg, bool newline = true){
     }
 }
 
-string spacing(int max, int num){
+string spacing(int max, int num){ // fills empty space dlm product row so column width is preserved
     string spaces = "";
     int spaceNeeded = max - num;
     for (int i = 0; i < spaceNeeded; i++){
@@ -18,7 +18,7 @@ string spacing(int max, int num){
     return spaces;
 }
 
-string displayPrice(int price){ //function to convert price int 999999 to 999,999 string (class keeps integer price, ts only for display)
+string displayPrice(int price){ // converts int (1000) to money format(?) (1,000)
     string priceStr = to_string(price);
     priceStr.insert(
         priceStr.length() - 3, 1, ','
