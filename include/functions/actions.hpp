@@ -9,6 +9,8 @@ enum actions {
     Exit = 'X',
 };
 
+//method to delete n lines above output?
+
 void promptAction(){
     print("ACTIONS");
     print("");
@@ -17,20 +19,25 @@ void promptAction(){
     print("[V] View Product");
     print("[X] Exit ");
     print("Choose Action: ");
+    //
     char action = charInput();
     switch (action)
     {
     case actions::Add:
         print("");
+        //add product interface
         break;
     case actions::Remove:
         print("");    
+        //array remove list, then update interface
         break;
     case actions::View:
         print("");
+        //extended view display
         break;
     case actions::Exit:
         print("Goodbye!");
+        exit();
         break;
     default: //any other input
         print("Invalid Input!");
@@ -47,6 +54,6 @@ void addProduct(){
     print("");
 }
 
-void exit(bool exitval){
-    exitval = false;
+void exit(){
+    running = false;
 }

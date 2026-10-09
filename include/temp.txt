@@ -1,0 +1,47 @@
+temp paste bin
+
+class product{
+    private:
+        string productID;
+        string name;
+        string type;
+        string subtype; // subtype
+        vector<string> properties; // whatever extra values in each child class
+        int price;
+        int amount;
+    public:
+        void setData(string prodID, string n, string t, string subt, vector<string> prop, int p, int amt){
+            //prodID; //id generator? or js dont use id might b 2 diff
+            name = n; type = t, subtype = subt, properties = prop;
+            price = p, amount = amt;
+        }
+
+        vector<string> getData(){
+            
+        }
+};
+
+//for each add item,  when prompted for type, show types list
+//after choosing type, show subtype list based on type
+//after choosing subtype, input each property value
+//maybe turn propertis into one array (int array) so u can loop through inputting(?)
+//add char limit to productname !!
+
+class food: public product{
+    private:
+        string type = "food";
+        string subtypes[3] = {"instant", "snacks", "fruits"};// 0, 1, 2
+        
+        int weight; // gr
+        int calories; // kal
+        int expires; // n days
+        int typeProperties[3] = {weight, calories, expires};
+    public:
+        food(int w, int c, int e, ){
+            weight = w; calories = c; expires = e;
+            setData(
+
+            )
+        };
+
+};
