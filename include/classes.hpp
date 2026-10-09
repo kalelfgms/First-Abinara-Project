@@ -1,9 +1,6 @@
 #pragma once
 #include "include.hpp"
-#include "globals.hpp"
 #include "functions/functions.hpp"
-//product list
-//string Products[] = {};
 //make vector/array that holds all the products
 //arrays only hold 1 datatype tho...
 //convert price and stock to string
@@ -12,7 +9,6 @@
 
 class product{
     private:
-        string productID;
         string name;
         string type;
         string subtype; // subtype
@@ -21,14 +17,12 @@ class product{
         int stock;
 
     public:
-        product(string prodID, string n, string t, string subt, int p, int stk){
-            //prodID; //id generator? or js dont use id might b 2 diff
+        product(string n, string t, string subt, int p, int stk){
             name = n; type = t; subtype = subt;
             price = p; stock = stk;
-            inventory.push_back(*this);
         };
 
-        void setProperties(vector<string> pr){
+        void setProperties(const vector<string>& pr){
             properties = pr;
         }
 
@@ -38,31 +32,32 @@ class product{
 
         string getValue(productInfo valName){
             switch (valName){
-            case productInfo::Name:
-                return name;
-            case productInfo::Type:
-                return type;
-            case productInfo::Subtype:
-                return subtype;
-            case productInfo::Price:
-                return displayPrice(price);
-            case productInfo::Stock:
-                return to_string(stock);
-            default:
-                break;
+                case productInfo::Name:
+                    return name;
+                case productInfo::Type:
+                    return type;
+                case productInfo::Subtype:
+                    return subtype;
+                case productInfo::Price:
+                    return displayPrice(price);
+                case productInfo::Stock:
+                    return to_string(stock);
+                default:
+                    return "";
             }
         }
 };
 
+inline vector<product> inventory = {}; 
+
 class food: public product{
     private:
-        string type = "food";
+        string type = "food";//ts pmo
         //subtypes = instant, snacks, fruits
         //properties: weight, calories, expires
     public:
         food(string n, string subt, int p, int stk)
-        : product("", n, type, subt, p, stk){}
-        //type should be applied auto, not from runner
+        : product(n, "food", subt, p, stk){}
 };
 
 class drink: public product{

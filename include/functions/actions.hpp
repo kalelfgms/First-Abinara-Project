@@ -37,7 +37,7 @@ void promptAction(){
         break;
     case actions::Exit:
         print("Goodbye!");
-        exit();
+        running = false;
         break;
     default: //any other input
         print("Invalid Input!");
@@ -52,8 +52,4 @@ void addProduct(){
     print("");
     print("");
     print("");
-}
-
-void exit(){
-    running = false;
 }
