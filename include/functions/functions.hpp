@@ -2,11 +2,8 @@
 #include "../include.hpp" // base includes
 
 void print(string msg, bool newline = true){ // biar nulis print() aja, opsi utk newline
-    if (newline) {
-        cout<<msg<<endl;
-    }else{
-        cout<<msg;
-    }
+    cout<<msg;
+    if (newline) cout<<endl;
 }
 
 string spacing(int max, int num){ // fills empty space dlm product row so column width is preserved
@@ -18,7 +15,7 @@ string spacing(int max, int num){ // fills empty space dlm product row so column
     return spaces;
 }
 
-string displayPrice(int price){ // converts int (1000) to money format(?) (1,000)
+string displayPrice(int price){ // converts int (1000) to money format(?) (1,000), max 999,999
     string priceStr = to_string(price);
     priceStr.insert(
         priceStr.length() - 3, 1, ','

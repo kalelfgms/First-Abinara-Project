@@ -2,7 +2,7 @@
 #include "../classes.hpp" // access to inventory
 
 void printHeader(){ // prints header
-    print("[        family mart mulyos asik uhuy         ]");
+    print("                                   [   nama toko yang sangat keren   ]                                      ");
     print("INVENTORY: "); 
     print("| no | product name         | price   | stock | category        | properties                               |"); //topbar format 
 }
@@ -18,52 +18,34 @@ void printProductLine(int index){ // prints each product row and its data
     string stock = Product.getValue(productInfo::Stock);
     vector<string> properties = Product.getProperties();
 
-    string sep = ", ";
+    const string sep = ", ";
 
-    //no
-    if (to_string(index).length() < 2){
-        print("| " + indexStr + "  |",false); // |  1 |
-    }else{
-        print("| " + indexStr + " |",false);  // | 10 |
-    }
+    //numba
+    print("| " + indexStr + spacing(2, indexStr.length()) + " |", false);
 
     //prodname
-    int nameLen = name.length();
-    int max_name = 20;
-    print(" " + name + spacing(max_name, nameLen) + " |", false);
+    print(" " + name + spacing(20, name.length()) + " |", false);
     
     //price
-    int priceLen = price.length();
-    int max_price = 7;
-    print(" " + price + spacing(max_price, priceLen) + " |", false);
+    print(" " + price + spacing(7, price.length()) + " |", false);
 
     //stock
-    if (stock.length() == 1){
-        print("   " + stock + "   |", false); // | 1    |
-    }else if(stock.length() == 2){
-        print("  " + stock + "   |", false);  // | 10   |
-    }else if(stock.length() == 3){
-        print("  " + stock + "  |", false);   // | 100  |
-    }
+    print(" " + stock + spacing(5, stock.length()) + " |", false);
 
     //category
     string categoryOutput = type + sep + subtype;
-    int catLen = categoryOutput.length();
-    int max_cat = 15;
-    print(" " + categoryOutput + spacing(max_cat, catLen) + " |", false);
+    print(" " + categoryOutput + spacing(15, categoryOutput.length()) + " |", false);
 
     //properties
     string propertiesOutput = "";
     int n_properties = properties.size();
     
     for (int i = 0; i < n_properties - 1; i++){
-        propertiesOutput += properties[i] + sep;
+        if (i > 0) propertiesOutput += sep;
+        propertiesOutput += properties[i];
     }
-    propertiesOutput += properties[n_properties-1];
 
-    int propLen = propertiesOutput.length();
-    int max_prop = 40;
-    print(" " + propertiesOutput + spacing(max_prop, propLen) + " |");
+    print(" " + propertiesOutput + spacing(40, propertiesOutput.length()) + " |");
 }
 
 void showInterface(){ // loops thorugh inventory to show each product

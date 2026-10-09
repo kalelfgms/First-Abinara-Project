@@ -16,12 +16,8 @@ class product{ // class
         int stock;
 
     public:
-        product(string n, string t, string subt, int p, int stk)
-        : name(n), type(t), subtype(subt), price(p), stock(stk) {};
-
-        void setProperties(const vector<string>& pr){
-            properties = pr;
-        }
+        product(string n, string t, string subt, int p, int stk, const vector<string>& pr)
+        : name(n), type(t), subtype(subt), price(p), stock(stk), properties(pr) {};
 
         vector<string> getProperties(){
             return properties;
@@ -45,4 +41,4 @@ class product{ // class
         }
 };
 
-vector<product> inventory = {};
+vector<product> inventory; //dibawah karna class product harus terdefinisi
